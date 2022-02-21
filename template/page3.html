@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index-style.css'%}">
+    <link rel="stylesheet" href="{% static 'css/page3-style.css'%}">
+    <link rel="icon" type="image/png" href="{% static 'images/sentiment-logo.png'%}">
+    <title>PWU Analysis</title>
+</head>
+
+<body onload="document.body.style.opacity='100%';">
+    <img class="background1" src="{% static 'images/sentiment-page-2.png'%}" alt="SentimentAnalysis">
+
+    <div class="button-section">
+        <a class="print-btn" onclick="window.print()">Print Sentiment 🖨️</a>
+        <a class="print-btn" href="{% url 'charts' %}">Try Again 🔄</a>
+        <a class="print-btn" href="{% url 'home' %}">Back to Home 🏠</a>
+    </div>
+
+    <h1 class="LabelSentiment">Sentiment Analysis</h1>
+    <h2 class="UserPicked">Section Code {{picked}}</h2>
+    <h2 class="PolarityPositive">Positive = {{Pos}}</h2>
+    <h2 class="PolarityNeutral">Neutral = {{Neu}}</h2>
+    <h2 class="PolarityNegative">Negative = {{Neg}}</h2>
+
+    <!-- Graph -->
+    <div class="row print-container">
+        <img src="data:image/png;base64, {{tables}}" class="graph">
+    </div>
+
+    {% if Pos > Neg and Pos > Neu %}
+    <h2 class="Polarity">Average Polarity = <a style="color: #779900">Positive</a></h2>
+    <img class="emotions1" src="{% static '/images/positive1.jpg'%}">
+    {% elif Neu > Neg and Neu > Pos  %}
+    <h2 class="Polarity">Average Polarity = <a style="color: #6a7276">Neutral</a></h2>
+    <img class="emotions2" src="{% static '/images/neutral.jpg'%}">
+    {% elif Neg == Neu or Neu == Pos or Neg == Pos %}
+    <h2 class="Polarity">Average Polarity = <a style="color: #6a7276">Neutral</a></h2>
+    <img class="emotions2" src="{% static '/images/neutral.jpg'%}">
+    {% elif Neg > Neu and Neg > Pos %}
+    <h2 class="Polarity">Average Polarity = <a style="color: #994438">Negative</a></h2>
+    <img class="emotions1" src="{% static '/images/SmileDog.jpg'%}">
+    {% endif %}
+    <div class="section1">
+        <!--Insert Graphs and other results  HERE -->
+    </div>
+</body>
+
+<!-- Footer Start -->
+<footer>
+    <div class="footer">
+        <div class="footer-section inline-text-2 show-on-scroll">
+            <h4 class="description3">PWU Professor's Evaluation</h4>
+            <h1 class="title4">Sentiment Analysis</h1>
+            <div class="icons-2">
+                <img class="logo-1" src="{% static 'images/sentiment-logo.png'%}" alt="smile">
+                <img class="logo-2" src="{% static 'images/PWU.png'%}" alt="two">
+                <img class="logo-3" src="{% static 'images/IT.png'%}" alt="three">
+            </div>
+        </div>
+    </div>
+    <div class="footer-2 ">
+        <img class="bg-design" src="{% static 'images/bg-design.png'%}" alt="design">
+
+        <div class="footer-section-2 inline-text-2 show-on-scroll">
+            <div class="contain">
+                <h4 class="description4">Powered by: </h4> <img class="code-logo"
+                    src="{% static 'images/code-logo.png'%}" alt="smile">
+            </div>
+            <h4 class="description5">Designed by Ira Studios</h4>
+        </div>
+    </div>
+</footer>
+<!-- Footer End -->
+
+<script src="{% static 'js/script-index.js'%}"></script>
+
+</html>

@@ -1,0 +1,381 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{% static '/css/evaluate-style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluation</title>
+</head>
+
+<style>
+    body,
+    html {
+        background-image: url("{% static '/images/form-bg.png' %}");
+    }
+</style>
+
+<body>
+    <div class="book-bg">
+
+        <!-- Navbar -->
+        <br><br>
+        <div class="nav">
+            <div class="nav-container">
+                <h1 style="font-size: 31px; text-align:center;">Professor's Evaluation</h1>
+                <h1 style="font-size: 19px; text-align:center;">Created for PWU Sentiment Analysis</h1>
+            </div>
+        </div>
+        <!-- End Navbar -->
+
+        <!-- START OF FORM -->
+        <form action="/confirmation/" method="POST">
+            {% csrf_token %}
+            <!--Students informations-->
+
+            <div class="white-box">
+                <label for="flname">Full name:</label><br>
+                <input placeholder="Lastname, Firstname" class="details" type="text" id="flname" name="flname"
+                    required><br>
+            </div>
+
+            <div class="white-box">
+                <label for="sem">Sem:</label><br>
+                <select name="sem" id="sem" class="drop"><br>
+                    <option value="1st" disabled="disabled">1st Sem</option>
+                    <option value="2nd" disabled="disabled">2nd Sem</option>
+                    <option value="3rd">3nd Sem</option>
+                </select><br>
+            </div>
+
+            <div class="white-box">
+                <label for="Prof">Professor name</label><br>
+                <input required class="details" type="text" id="Prof" name="Prof" style="text-transform:uppercase"
+                    placeholder="Lastname, Firstname"><br>
+            </div>
+
+            <div class="white-box">
+                <label for="Year">Year</label><br>
+                <select name="Year" id="Year" class="drop"><br>
+                    <option value="1st">1st Year</option>
+                    <option value="2nd">2nd Year</option>
+                    <option value="3rd">3nd Year</option>
+                </select><br>
+            </div>
+
+            <div class="white-box">
+                <label for="Section">Subject Code</label><br>
+                <input required class="details" onblur="this.value=removeSpaces(this.value);" type="text" id="Section"
+                    name="Section" placeholder="BSIT 350" style="text-transform:uppercase"><br><br>
+            </div>
+
+
+            <div class="image-center">
+                <h4 style="color: #fff">Where to find the Subject Code:</h4>
+                <!-- <img src="{% static '/images/Navigate.png'%}" alt="navigate"> -->
+                <img class="guide" src="{% static 'images/navigate.png'%}" alt="navigate">
+            </div>
+            <!---------------------------------------------------------->
+
+            <div class="white-box">
+                <h3>Mastery of Subject Matter</h3>
+                <label>Discusses knowledgeably important points in the lesson.</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select1" id="1"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+
+                <label>Illustrates practical applications of the lessons.</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select2" id="2"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+
+                <label>Discusses current developments in the professional field.</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select3" id="3"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+
+                <label>Relates subject matter to other areas of professional knowledge</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select4" id="4"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+
+                <label>Answers students' questions clearly, adequately, and competently.</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select5" id="5"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+            </div>
+            <!---------------------------------------------------------->
+
+            <div class="white-box">
+                <h3>Planning and Organization</h3>
+                <label>Prepares the course syllabus in the context of the vision-mission, goals and core values of the
+                    University</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select6" id="6"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+
+                <label>Presents competently the subject course content within the University's school calendar and time
+                    schedule.</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select7" id="7"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+
+                <label>Clearly states the course requirements, journal readings and references that will contribute to
+                    student learning.</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select8" id="8"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+
+                <label>Provides the basis for grading, including clarifying University policies with regard to
+                    attendance, class decorum, plagiarism, inclusion and other values characteristic of the
+                    University.</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select9" id="9"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+
+                <label>Presents the mechanics for optimum virtual learning, including the scheduling of both synchronous
+                    and asynchronous classes.</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select10" id="10"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+            </div>
+            <!---------------------------------------------------------->
+            <div class="white-box">
+                <h3>Communication Skills</h3>
+                <label>Uses English as the medium of instruction except when the use of other languages is
+                    required.</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select11" id="11"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+
+                <label>Uses words that are clear and aligned to the subject course content under discussion.</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select12" id="12"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+
+                <label>Speaks in a well-modulated voice that can be heard by everyone in the class.</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select13" id="13"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+
+                <label>Communicates with students with respect and a high degree of professionalism.</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select14" id="14"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+
+                <label>Uses appropriate verbal and non-verbal gender-sensitive language</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select15" id="15"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+            </div>
+            <!---------------------------------------------------------->
+            <div class="white-box">
+                <h3>Instructional Skills</h3>
+                <label>Applies experiential learning while emphasizing applications rather than rote memory.</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select16" id="16"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+
+                <label>Implements an interactive approach to generate student</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select17" id="17"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+
+                <label>Competently uses innovative, creative teaching tools-i.e., LMS</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select18" id="18"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+
+                <label>Stimulates students' interest by asking thought-provoking and relevant questions while respecting
+                    diverse points of view.</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select19" id="19"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+
+                <label> Provides students with clear instructions for every online learning material posted in google
+                    classroom.</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select20" id="20"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+            </div>
+            <!---------------------------------------------------------->
+            <div class="white-box">
+                <h3>Classroom Management</h3>
+                <label>Initiates active student participation in class discussions and activities.</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select21" id="21"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+
+                <label>Begins and ends the class on time</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select22" id="22"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+
+                <label>Ensures good audio and video quality during online classes.</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select23" id="23"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+
+                <label>Promotes active student engagement in synchronous classes</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select24" id="24"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+
+                <label>Is available for consultation during asynchronous sessions</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select25" id="25"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+            </div>
+            <!---------------------------------------------------------->
+            <div class="white-box">
+                <h3>Personal Traits</h3>
+                <label>Possess a pleasant personality, is approachable and exudes self -confidence.</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select26" id="26"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+
+                <label>Dresses appropriately and is well groomed.</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select27" id="27"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+
+                <label>Adheres to professional ethics and standards.</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select28" id="28"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+
+                <label>Shows sensitivity and consideration in teaching and working with students</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select29" id="29"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+
+                <label>Exhibits openness to ideas and suggestions.</label><br>
+                <select onchange="this.className=this.options[this.selectedIndex].className" class="drop-2 neutral"
+                    name="select30" id="30"><br>
+                    <option class="neutral" value=1>Neutral</option>
+                    <option class="positive" value=2>Positive</option>
+                    <option class="negative" value=0>Negative</option>
+                </select><br>
+            </div>
+            <!---------------------------------------------------------->
+            <div class="white-box">
+                <h3>Comments about your professor</h3><br>
+                <label for="fname">Comments</label><br>
+                <input class="details" type="text" id="comment" name="comment"><br>
+            </div>
+
+            <div class="button-style">
+                <input required type="submit" id="submit" value="Submit" class="submit button">
+                <input type="reset" value="Clear" class="button-2">
+                <br><br><br>
+            </div>
+        </form>
+        <!-- END OF FORM -->
+
+    </div>
+
+    <!-- Script Imports -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- Error and Validation Message -->
+    <script>
+        function removeSpaces(string) {
+            return string.split(' ').join('');
+        }
+    </script>
+    <!-- END of Error and Validation Message -->
+
+</body>
+
+</html>

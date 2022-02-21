@@ -1,0 +1,172 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index-style.css'%}">
+    <link rel="icon" type="image/png" href="{% static 'images/sentiment-logo.png'%}">
+    <title>PWU Analysis</title>
+</head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+    body {
+  opacity: 0%;
+  transition: opacity 3s;
+}
+
+.title-page2 {
+  position: fixed;
+  top: 135px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-duration: 3s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    top: 235px;
+    opacity: 0%;
+  }
+
+  to {
+    top: 135px;
+    opacity: 100%;
+  }
+}
+
+.start{
+margin-top: 150px;
+font-family: Righteous;
+text-align: center;
+padding: 20px;
+font-style: normal;
+font-weight: normal;
+font-size: 50px;
+color: #fff;
+border-radius: 25px;
+background: linear-gradient(180deg, #f24f52 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-family: Rubik;
+  font-size: 25px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50px;
+  width: 300px;
+  top: 100px;
+  height: auto;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #3e8e41;
+  transition: all 0.3s ease;
+}
+
+#myInput {
+  box-sizing: border-box;
+  background-image: url('images/search.png');
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  margin-left: 0px;
+  margin-top: -10px;
+  font-size: 16px;
+  padding: 25px 20px 12px 50px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  
+}
+
+#myInput:focus {outline: 3px solid #ddd;}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: 50px;
+  margin-top: 20px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 1px solid #ddd;
+  z-index: 1;
+  margin-left: 8px;
+  max-height: 350px;
+  margin-top: 10px;
+  border-radius: 25px;
+  
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  font-family: Rubik;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;
+}
+
+.show {display: block;}
+
+.buttons {
+  background-color: #fff;
+  color: #2a2b2f;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  border: 1px solid #ffffff;
+  box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50px;
+}
+
+.buttons:hover {
+  background-color: #f24f52;
+  border: #f24f52;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.buttons:active {
+  background-color: #f24f52;
+  box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
+  transform: translateY(4px);
+}
+
+.button-sections {
+  margin-top: 80px;
+  margin-left: 30%;
+}
+
+</style>
+
+<body onload="document.body.style.opacity='100%';">
+
+    <img class="background1" src="{% static 'images/sentiment-page-1.png'%}" alt="SentimentAnalysis">
+    <div class="title-page2">
+    <h1 class="start">Thank you for submitting your Evaluation!</h1>
+    <div class="button-sections"><a href="{% url 'home' %}" class="buttons">Go to homepage</a></div> 
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/index-style.css' %}">
+    <link rel="icon" type="image/png" href="{% static '/images/sentiment-logo.png' %}">
+    <title>PWU Analysis</title>
+</head>
+
+<style>
+    body {
+        opacity: 0%;
+        transition: opacity 2s;
+    }
+</style>
+
+<body onload="document.body.style.opacity='100%';">
+   <!-- <img class="design" src="{% static '/images/smiling-face.png' %}" alt="smile"> -->
+    <img class="background1" src="{% static '/images/sentiment-bg.png'%}" alt="SentimentAnalysis">
+
+    <div class="section1">
+        <div class="icons">
+            <img class="logo-1" src="{% static '/images/sentiment-logo.png'%}" alt="smile">
+            <img class="logo-2" src="{% static '/images/PWU.png'%}" alt="two">
+            <img class="logo-3" src="{% static '/images/IT.png'%}" alt="three">
+        </div>
+
+        <div class="titles">
+            <h4 class="description1">PWU Professor's Evaluation</h4>
+            <h1 class="title1">Sentiment</h1>
+            <h1 class="title2">Analysis</h1>
+            <h4 class="description2">Use sentiment analysis to quickly detect emotions in text data.
+                Play around with our sentiment analyzer!</h4>
+            <div class="button-section"><a href="charts/" class="button1">GET STARTED</a><a href="evaluate/"
+                    class="button1">EVALUATE</a></div>
+        </div>
+    </div>
+    <div class="section-2">
+        <h1 class="title3 inline-text show-on-scroll">What is Sentiment Analysis?🤔</h1>
+        <div class="content inline-text show-on-scroll">Sentiment analysis (or opinion mining) is a natural language
+            processing (NLP) technique used to determine whether data is positive, negative or neutral. Sentiment
+            analysis is often performed on textual data to help businesses monitor brand and product sentiment in
+            customer feedback, and understand customer needs.<br>
+            This website will utilize the algorithm, with the purpose of visualizing the perspective of students on
+            their respective professors. Using machine learning and powerful programming languages such as Python, we’ll
+            be able to create meaningful graphs based on the opinions of students of Philippine Women’s University.
+        </div>
+    </div>
+    <img class="background1" src="{% static '/images/sentiment-bg-2.png'%}" alt="SentimentAnalysis">
+</body>
+
+<footer>
+    <div class="footer">
+        <div class="footer-section inline-text-2 show-on-scroll">
+            <h4 class="description3">PWU Professor's Evaluation</h4>
+            <h1 class="title4">Sentiment Analysis</h1>
+            <div class="icons-2">
+                <img class="logo-1" src="{% static '/images/sentiment-logo.png'%}" alt="smile">
+                <img class="logo-2" src="{% static '/images/PWU.png'%}" alt="two">
+                <img class="logo-3" src="{% static '/images/IT.png'%}" alt="three">
+            </div>
+        </div>
+    </div>
+    <div class="footer-2 ">
+        <img class="bg-design" src="{% static '/images/bg-design.png'%}" alt="design">
+
+        <div class="footer-section-2 inline-text-2 show-on-scroll">
+            <div class="contain">
+                <h4 class="description4">Powered by: </h4> <img class="code-logo"
+                    src="{% static '/images/code-logo.png'%}" alt="smile">
+            </div>
+            <h4 class="description5">Designed by Ira Studio</h4>
+        </div>
+    </div>
+</footer>
+
+<script src="{% static '/js/script-index.js'%}"></script>
+
+</html>

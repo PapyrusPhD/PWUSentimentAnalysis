@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/index-style.css'%}">
+  <link rel="stylesheet" href="{% static 'css/page2-style.css'%}">
+  <link rel="icon" type="image/png" href="{% static 'images/sentiment-logo.png'%}">
+  <title>PWU Analysis</title>
+</head>
+
+<style>
+  body {
+    background-image: url("{% static 'images/sentiment-page-1.png' %}");
+  }
+
+  .select {
+    background-image: url("{% static 'images/down-arrow.png' %}");
+  }
+</style>
+
+<body onload="document.body.style.opacity='100%';">
+
+  <div class="title-page2">
+    <h1 class="start">Getting Started</h1>
+
+    <form autocomplete="off" action="results">
+      <!-- <select class="select" name="select" id="select"> -->
+      <input class="select" placeholder="Select the desired SectionCode" list="subjectcodes" name="select" id="select">
+      <datalist id="subjectcodes">
+        <!-- <option id="myDropdown" selected disabled=false>Select the desired SectionCode </option> -->
+        {% for section in SectionCodeList %}
+        <option value={{section.subjectcode}}>{{section.subjectcode}}</option>
+        {% endfor %}
+        <option value="All">All section code</option>
+      </datalist>
+      </select>
+      <div class="submit-section">
+        <input class="submit" type="submit">
+      </div>
+    </form>
+    <script>
+      /* When the user clicks on the button,
+      toggle between hiding and showing the dropdown content */
+      function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+      }
+
+      function filterFunction() {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        div = document.getElementById("myDropdown");
+        a = div.getElementsByTagName("a");
+        for (i = 0; i < a.length; i++) {
+          txtValue = a[i].textContent || a[i].innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+          } else {
+            a[i].style.display = "none";
+          }
+        }
+      }
+    </script>
+
+
+</body>
+
+</html>
